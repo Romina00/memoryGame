@@ -1,0 +1,13 @@
+nach notation 
+Die SASS-Datei wird nach ITCSS-Ebenen organisiert:
+
+Settings: Variablen
+Tools: Mixins, Functions
+Generic: Reset, allgemeine Stile
+Elements: Basiselemente
+Objects: Layoutstrukturen
+Components: spezifische UI-Komponenten
+Utilities: Helferklassen
+
+
+sass SCSS/styles.scss styles.css

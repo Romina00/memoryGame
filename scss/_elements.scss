@@ -1,0 +1,37 @@
+@use 'settings' as *;
+
+h1 {
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+  color: hsl(0, 18%, 97%);
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+p,
+li {
+  max-width: 40rem;
+  margin: auto;
+}
+
+/* tabelle */
+table,
+th,
+td {
+  border: solid 1px hsl(0, 0%, 50%);
+}
+
+table {
+  border-collapse: collapse;
+  margin: auto;
+}
+
+td {
+  padding: 0.5rem;
+  font-size: 0.9rem;
+}

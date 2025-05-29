@@ -1,0 +1,65 @@
+@use 'settings' as *;
+@use "tools" as *;
+
+
+@media (max-width: 768px) {
+  main {
+    grid-template-columns: 1fr; 
+    padding: 1rem; 
+  }
+
+  #contact-form {
+    max-width: 90%; 
+    gap: 0.5rem; 
+  }
+
+  #ueberblick table {
+    font-size: 0.9rem; 
+}
+
+}
+
+@media (min-width: 773px) {
+  #spielanleitung,
+  #geschichte,
+  #vorteile-des-spiels,
+  #tipps-fuer-erwachsene,
+  #kurioses-zu-memory,
+  #varianten-des-spiels,
+  #wissenschaft-hinter-dem-spiel,
+  #herausforderung-fuer-kinder,
+  #extra-ideen,
+  #nachricht {
+    @include responsive-box;
+
+  }
+
+  #nachricht form {
+    width: 100%; // Formular nimmt volle Breite ein
+  }
+
+  #ueberblick,
+  #spiel-online {
+    @include responsive-box;
+
+  }
+}
+
+
+  #ueberblick table {
+    width: 100%; 
+    margin: 0 auto; 
+    font-size: 1rem;
+  }
+
+  #spiel-online {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+
+    button {
+      margin-top: 2rem; 
+      align-self: center; 
+    }
+  }
+

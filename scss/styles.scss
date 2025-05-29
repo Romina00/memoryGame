@@ -1,0 +1,18 @@
+@use 'settings'  as *;
+@use 'tools'  as *;
+@use 'generic';
+@use 'elements';
+@use 'objects';
+@use 'components';
+@use 'utilities';
+
+
+/*
+  Warum ITCSS? 
+  
+  Ich habe mich für ITCSS entschieden, weil es eine strukturierte und skalierbare Organisation des CSS ermöglicht. 
+  Mit klar definierten Schichten (Settings, Tools, Generic, Elements, Objects, Components und Utilities) 
+  kann der Code leichter gewartet, erweitert und verstanden werden. 
+  Dies reduziert CSS-Konflikte und sorgt für eine saubere Trennung zwischen globalen und spezifischen Styles. 
+  ITCSS ist besonders geeignet für Projekte wie dieses, bei dem sowohl allgemeine Stile als auch spezifische Komponenten notwendig sind.
+  */

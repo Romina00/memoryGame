@@ -1,0 +1,100 @@
+@use 'settings' as *;
+
+// Globale Helferklassen
+.hidden {
+  display: none !important;
+}
+
+// Keyframe-Animationen
+// Mixins für wiederverwendbare Animationen
+@mixin fadeIn($scaleStart: 0.9, $duration: 1s) {
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: scale($scaleStart);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+
+// Mixin für Shimmer-Animation (Farbverlaufseffekt)
+@mixin shimmer($base-color: hsl(220, 50%, 20%), $highlight-color: hsl(220, 70%, 60%)) {
+  @keyframes shimmer {
+    0% {
+      background-position: -200px 0;
+      background-color: $base-color;
+    }
+    50% {
+      background-color: $highlight-color;
+    }
+    100% {
+      background-position: 200px 0;
+      background-color: $base-color;
+    }
+  }
+}
+
+//Mixin für eine Rainbow-Animation (Hintergrundbewegung)
+@mixin slideRainbow {
+  @keyframes slideRainbow {
+    0% {
+      background-position: 0%;
+    }
+    100% {
+      background-position: 100%;
+    }
+  }
+}
+@mixin button-gradient($border-radius: 12px) {
+  display: block;
+  margin: 20px auto;
+  padding: 15px 30px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: linear-gradient(
+    90deg,
+    hsl(220, 50%, 20%) 25%,
+    hsl(220, 70%, 60%) 50%,
+    hsl(220, 50%, 20%) 75%
+  );
+  background-size: 200px 100%;
+  color: hsl(0, 18%, 97%);
+  border: none;
+  border-radius: $border-radius;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 4px 10px hsl(0, 0%, 0%, 0.3);
+  transform: perspective(100px) rotateX(10deg);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: shimmer 2s infinite linear, buttonPulse 1.5s infinite alternate;
+}
+
+//Mixin für Hover- und Active-Zustände
+@mixin button-hover {
+  transform: perspective(100px) rotateX(5deg) translateY(-3px);
+  box-shadow: 0 6px 15px hsl(0, 0%, 0%, 0.4);
+}
+
+@mixin button-active {
+  transform: perspective(100px) rotateX(2deg) scale(0.95);
+  box-shadow: 0 2px 5px hsl(0, 0%, 0%, 0.2);
+  animation: none; // Stoppt die Farb-Animation beim Klicken
+}
+
+// Mixin für Box-Schatten und Border-Radius
+@mixin box-shadow($radius: 10px, $shadow: 0px 4px 6px hsla(0, 0%, 0%, 0.1)) {
+  border-radius: $radius;
+  box-shadow: $shadow;
+}
+// Mixin für Media Queries soll das wiederkehrende Box-Stile kapseln
+@mixin responsive-box($bg-color: hsl(var(--main-hue), 100%, 95%)) {
+  width: 80%;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: $bg-color;
+  @include box-shadow;
+}

@@ -1,0 +1,14 @@
+@use 'settings' as *;
+
+// Globale Reset-Stile
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  width: var(--main-block-width);
+  margin: var(--main-block-margin);
+  background: hsl(var(--main-hue), 100%, 95%);
+}

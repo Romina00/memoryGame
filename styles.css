@@ -1,0 +1,427 @@
+@charset "UTF-8";
+:root {
+  font-size: 1rem;
+  font-family: sans-serif;
+  --main-hue: 200;
+  --main-block-width: 90%;
+  --main-block-margin: 2% auto;
+  --main-block-padding: 2%;
+}
+
+.hidden {
+  display: none !important;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  width: var(--main-block-width);
+  margin: var(--main-block-margin);
+  background: hsl(var(--main-hue), 100%, 95%);
+}
+
+h1 {
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+  color: hsl(0, 18%, 97%);
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+p,
+li {
+  max-width: 40rem;
+  margin: auto;
+}
+
+/* tabelle */
+table,
+th,
+td {
+  border: solid 1px hsl(0, 0%, 50%);
+}
+
+table {
+  border-collapse: collapse;
+  margin: auto;
+}
+
+td {
+  padding: 0.5rem;
+  font-size: 0.9rem;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
+  padding: 2rem;
+  background: hsl(var(--main-hue), 95%, 98%);
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px hsla(0, 0%, 0%, 0.1);
+}
+
+/*spielfeld-layout*/
+.memory-game {
+  margin-top: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(80px, 1fr));
+  gap: 10px;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 500px !important;
+}
+/* Kartengestaltung*/
+.card {
+  width: clamp(80px, 15vw, 110px);
+  height: clamp(80px, 15vw, 110px);
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+  cursor: pointer;
+  
+}
+/*Animationen für Karten*/
+.card.flip {
+  transform: rotateY(180deg);
+}
+
+.spiel-online {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 100vh;
+  background: hsl(var(--main-hue), 100%, 95%);
+}
+
+#ueberblick {
+  width: 100%;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+#ueberblick table {
+  width: 100%;
+  background: hsl(var(--main-hue), 80%, 95%);
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0px 4px 6px hsla(0, 0%, 0%, 0.1);
+  margin: 0 auto;
+}
+#ueberblick th,
+#ueberblick td {
+  padding: 1rem;
+  text-align: left;
+  word-wrap: break-word;
+}
+#ueberblick th {
+  background: hsl(var(--main-hue), 70%, 85%);
+}
+/*Start-Button und Gewinner-Nachricht*/
+#startGame {
+  display: block;
+  margin: 20px auto;
+  padding: 15px 30px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, hsl(220, 50%, 20%) 25%, hsl(220, 70%, 60%) 50%, hsl(220, 50%, 20%) 75%);
+  background-size: 200px 100%;
+  color: hsl(0, 18%, 97%);
+  border: none; /* keine rahmen */
+  border-radius: 12px;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 4px 10px hsla(0, 0%, 0%, 0.3);
+  transform: perspective(100px) rotateX(10deg);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: shimmer 2s infinite linear, buttonPulse 1.5s infinite alternate;
+}
+
+#startGame:hover {
+  transform: perspective(100px) rotateX(5deg) translateY(-3px);
+  box-shadow: 0 6px 15px hsla(0, 0%, 0%, 0.4);
+}
+
+#startGame:active {
+  transform: perspective(100px) rotateX(2deg) scale(0.95);
+  box-shadow: 0 2px 5px hsla(0, 0%, 0%, 0.2);
+  animation: none;
+}
+
+@keyframes buttonPulse {
+  0% {
+    transform: perspective(100px) rotateX(10deg) scale(1);
+  }
+  100% {
+    transform: perspective(100px) rotateX(10deg) scale(1.1);
+  }
+}
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* gewinner nachricht */
+.winner-message {
+  margin-top: 20px;
+  padding: 15px;
+  background: hsl(51, 100%, 50%);
+  color: hsl(0, 0%, 100%);
+  text-align: center;
+  border-radius: 10px;
+  animation: fadeIn 1s ease;
+}
+/*Animationen für Karten*/
+.front,
+.back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+}
+
+.front {
+  background: hsl(var(--main-hue), 80%, 60%);
+  background: linear-gradient(90deg, hsl(220, 50%, 20%) 25%, hsl(220, 70%, 60%) 50%, hsl(220, 50%, 20%) 75%);
+  background-size: 200px 100%;
+  animation: shimmer 2s infinite linear;
+}
+
+.back {
+  background: hsl(var(--main-hue), 40%, 70%);
+  transform: rotateY(180deg);
+}
+
+header {
+  background: hsl(var(--main-hue), 100%, 50%);
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.logo {
+  width: 120px;
+}
+
+.selection-screen {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.selection-option {
+  display: inline-block;
+  margin: 10px;
+  padding: 20px 40px;
+  background: hsl(0, 18%, 97%);
+  border-radius: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+.selection-option:hover {
+  transform: scale(1.1);
+  background: hsl(220, 70%, 60%);
+}
+.selection-option:active {
+  transform: scale(1.05);
+  background: hsl(59, 94%, 49%);
+}
+
+/* Hamburger-Menü */
+nav {
+  height: 0;
+  width: 0;
+  overflow: hidden;
+  transition: 3s;
+}
+nav > ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+nav li {
+  text-align: center;
+  padding: 1%;
+  margin: 1%;
+  background: hsl(197, 75%, 75%);
+  border-radius: 5px;
+}
+nav a {
+  text-decoration: none;
+  color: hsl(0, 0%, 0%);
+  display: block;
+}
+
+#ham a {
+  text-decoration: none;
+  color: hsl(0, 0%, 0%);
+  font-size: 2rem;
+}
+#ham > div {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 5%;
+}
+
+[href="#close"] {
+  display: none;
+}
+
+#open:target nav {
+  height: auto;
+  width: 100%;
+}
+#open:target [href="#open"] {
+  display: none;
+}
+#open:target [href="#close"] {
+  display: block;
+}
+
+nav ul {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  min-width: 100%;
+}
+nav li {
+  width: 100%;
+  margin: 0.3rem;
+  padding: 0.3rem;
+}
+
+#nachricht {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  width: 100%;
+}
+
+/*
+Konrakt Form */
+#contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 500px;
+  width: 90%;
+  margin: 0 auto;
+}
+#contact-form textarea {
+  width: 100%;
+  min-height: 100px;
+  border: 1px solid hsl(0, 0%, 80%);
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1rem;
+}
+#contact-form button {
+  padding: 10px 18px;
+  font-size: 1rem;
+  font-weight: bold;
+  background: hsl(194, 75%, 73%);
+  color: hsl(0, 18%, 97%);
+  border: none;
+  border-radius: 5px;
+}
+#contact-form button:hover {
+  background: hsl(220, 60%, 40%);
+}
+#contact-form button:active {
+  background: hsl(194, 75%, 73%);
+  transform: scale(0.98);
+}
+
+@media (max-width: 768px) {
+  main {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+  #contact-form {
+    max-width: 90%;
+    gap: 0.5rem;
+  }
+  #ueberblick table {
+    font-size: 0.9rem;
+  }
+}
+@media (min-width: 773px) {
+  #spielanleitung,
+  #geschichte,
+  #vorteile-des-spiels,
+  #tipps-fuer-erwachsene,
+  #kurioses-zu-memory,
+  #varianten-des-spiels,
+  #wissenschaft-hinter-dem-spiel,
+  #herausforderung-fuer-kinder,
+  #extra-ideen,
+  #nachricht {
+    width: 80%;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background: hsl(var(--main-hue), 100%, 95%);
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px hsla(0, 0%, 0%, 0.1);
+  }
+  #nachricht form {
+    width: 100%;
+  }
+  #ueberblick,
+  #spiel-online {
+    width: 80%;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background: hsl(var(--main-hue), 100%, 95%);
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px hsla(0, 0%, 0%, 0.1);
+  }
+}
+#ueberblick table {
+  width: 100%;
+  margin: 0 auto;
+  font-size: 1rem;
+}
+
+#spiel-online {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+#spiel-online button {
+  margin-top: 2rem;
+  align-self: center;
+}
+
+/*
+  Warum ITCSS? 
+
+  Ich habe mich für ITCSS entschieden, weil es eine strukturierte und skalierbare Organisation des CSS ermöglicht. 
+  Mit klar definierten Schichten (Settings, Tools, Generic, Elements, Objects, Components und Utilities) 
+  kann der Code leichter gewartet, erweitert und verstanden werden. 
+  Dies reduziert CSS-Konflikte und sorgt für eine saubere Trennung zwischen globalen und spezifischen Styles. 
+  ITCSS ist besonders geeignet für Projekte wie dieses, bei dem sowohl allgemeine Stile als auch spezifische Komponenten notwendig sind.
+  */
+
+/*# sourceMappingURL=styles.css.map */

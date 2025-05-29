@@ -1,0 +1,74 @@
+@use 'settings' as *;
+@use 'tools' as *;
+
+main {
+  display: flex;
+  flex-direction: column; // Elemente werden untereinander gestapelt
+  gap: 2rem; // Abstand zwischen den Abschnitten
+  align-items: center; // Zentriert den Inhalt
+  width: 90%;
+  margin: 0 auto; // Zentriert das gesamte Main
+  padding: 2rem;
+  background: hsl(var(--main-hue), 95%, 98%);
+
+  @include box-shadow; // Verwendet das bestehende Mixin für Schatten & Radius
+}
+.memory-game {
+  margin-top: 0; // Entfernt zusätzlichen Abstand nach oben
+  display: grid;
+  grid-template-columns: repeat(4, minmax(80px, 1fr)); // 4 Karten pro Zeile
+  gap: 10px; // Abstand zwischen den Karten
+  justify-content: center; // Karten zentriert
+  margin: 0 auto; // Memory-Spiel bleibt zentriert
+  max-width: 500px !important;
+}
+
+.card {
+  width: clamp(80px, 15vw, 110px);
+  height: clamp(80px, 15vw, 110px);
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+  cursor: pointer;
+}
+
+.card.flip {
+  transform: rotateY(180deg);
+}
+
+.spiel-online {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 100vh;
+  background: hsl(var(--main-hue), 100%, 95%);
+}
+
+#ueberblick {
+  width: 100%; // Nutzt die volle Breite des Containers
+  margin-bottom: 2rem; // Abstand zum nächsten Abschnitt
+  text-align: center; // Text in der Mitte
+
+  table {
+    width: 100%; // Die Tabelle füllt immer die Breite
+    background: hsl(var(--main-hue), 80%, 95%);
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0px 4px 6px hsl(0, 0%, 0%, 0.1);
+    margin: 0 auto; // Zentriert die Tabelle
+  }
+
+  th,
+  td {
+    padding: 1rem;
+    text-align: left; // Text linksbündig
+    word-wrap: break-word; // Zeilenumbruch bei langen Texten
+  }
+
+  th {
+    background: hsl(var(--main-hue), 70%, 85%);
+  }
+}

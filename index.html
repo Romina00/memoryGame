@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memory Spiel</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body id="close">
+    <header id="open">
+      <h1>Memory Spiel</h1>
+      <img class="logo" src="pic/header.png" alt="maus" />
+      <div id="ham">
+        <div><a href="#close">x</a></div>
+        <div><a href="#open">&#9776;</a></div>
+      </div>
+      <nav id="nav">
+        <ul>
+          <li><a href="#ueberblick">Überblick</a></li>
+          <li>
+            <a href="#spiel-online">Das Spiel Online</a>
+          </li>
+          <li><a href="#spielanleitung">Spielanleitung</a></li>
+          <li><a href="#geschichte">Geschichte des Spiels</a></li>
+          <li><a href="#vorteile-des-spiels">Vorteile des Spiels</a></li>
+          <li><a href="#tipps-fuer-erwachsene">Tipps für Erwachsene</a></li>
+          <li><a href="#kurioses-zu-memory">Kurioses zu Memory</a></li>
+          <li><a href="#varianten-des-spiels">Varianten des Spiels</a></li>
+          <li>
+            <a href="#wissenschaft-hinter-dem-spiel"
+              >Wissenschaft hinter dem Spiel</a
+            >
+          </li>
+          <li>
+            <a href="#herausforderung-fuer-kinder"
+              >Herausforderung für Kinder</a
+            >
+          </li>
+          <li><a href="#extra-ideen">Extra-Ideen für die Webseite</a></li>
+          <li><a href="#nachricht">Nachricht</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <article id="ueberblick">
+        <h2>Überblick</h2>
+        <table>
+          <tr>
+            <th>Kategorie</th>
+            <th>Details</th>
+          </tr>
+          <tr>
+            <td>Ab welchem Alter</td>
+            <td>Ab 3 Jahren</td>
+          </tr>
+          <tr>
+            <td>Spieleranzahl</td>
+            <td>2 oder mehr Spieler</td>
+          </tr>
+          <tr>
+            <td>Ziel des Spiels</td>
+            <td>Die meisten Kartenpaare sammeln</td>
+          </tr>
+        </table>
+      </article>
+
+      <!-- Spielbereich -->
+      <article id="spiel-online">
+        <h2>Das Spiel Online</h2>
+        <!-- Button zur Bestätigung -->
+        <!-- <button id="start-button">Spiel starten</button> -->
+        <button id="startGame">Hier klicken</button>
+
+        <!-- Auswahlbildschirm -->
+        <div class="selection-screen hidden">
+          <p>Wähle ein Thema für dein Memory:</p>
+          <div class="selection-option" data-theme="MonsterMemory">
+            Monster AG
+          </div>
+          <div class="selection-option" data-theme="FruitMemory">Obst</div>
+        </div>
+        <!-- Memory-Spiel -->
+        <div class="memory-container hidden">
+          <div class="memory-game">
+            <!-- Karten werden dynamisch per JS generiert -->
+          </div>
+          <!-- Gewonnen-Bildschirm -->
+          <div class="winner-message hidden">Hurra! Du hast gewonnen!</div>
+        </div>
+      </article>
+
+      <article id="spielanleitung">
+        <h2>Spielanleitung</h2>
+        <p>
+          Memory ist ein Konzentrations- und Gedächtnisspiel, das mit
+          Kartenpaaren gespielt wird. Hier ist, wie es gespielt wird:
+        </p>
+        <ul>
+          <li>
+            Alle Karten werden gemischt und verdeckt auf den Tisch gelegt.
+          </li>
+          <li>Die Spieler decken abwechselnd zwei Karten auf.</li>
+          <li>
+            Wenn die Karten übereinstimmen, behält der Spieler das Paar und darf
+            erneut ziehen.
+          </li>
+          <li>
+            Wenn die Karten nicht übereinstimmen, werden sie wieder umgedreht.
+          </li>
+          <li>Das Spiel endet, wenn alle Paare gefunden wurden.</li>
+        </ul>
+      </article>
+
+      <article id="geschichte">
+        <h2>Geschichte des Spiels</h2>
+        <p>
+          Memory hat seinen Ursprung in einem traditionellen japanischen Spiel
+          namens <i>Kai Awase</i>, das im 12. Jahrhundert gespielt wurde. Die
+          moderne Version wurde 1959 von William Hurter entwickelt und von
+          Ravensburger veröffentlicht.
+        </p>
+      </article>
+
+      <article id="vorteile-des-spiels">
+        <h2>Vorteile des Spiels</h2>
+        <p>
+          Memory ist nicht nur ein Spiel, sondern auch ein Werkzeug zur
+          Förderung der geistigen Gesundheit. Es hilft:
+        </p>
+        <ul>
+          <li>Die Konzentrationsfähigkeit zu steigern.</li>
+          <li>Das Kurzzeitgedächtnis zu verbessern.</li>
+          <li>Die visuelle Wahrnehmung zu schulen.</li>
+        </ul>
+      </article>
+
+      <article id="tipps-fuer-erwachsene">
+        <h2>Tipps für Erwachsene</h2>
+        <p>
+          Auch Erwachsene können Memory nutzen, um das Gedächtnis zu trainieren.
+          Für eine zusätzliche Herausforderung können Sie:
+        </p>
+        <ul>
+          <li>Die Karten schneller mischen.</li>
+          <li>Eine Zeitbegrenzung einführen.</li>
+          <li>
+            Sich Zahlen oder Wörter merken, die kurz vor dem Umdrehen der Karten
+            angezeigt werden.
+          </li>
+        </ul>
+      </article>
+
+      <article id="kurioses-zu-memory">
+        <h2>Kurioses zu Memory</h2>
+        <p>
+          Memory ist eines der meistverkauften Spiele aller Zeiten, mit über 75
+          Millionen verkauften Exemplaren weltweit.
+        </p>
+      </article>
+
+      <article id="varianten-des-spiels">
+        <h2>Varianten des Spiels</h2>
+        <ul>
+          <li>
+            <strong>Team Memory:</strong> Spieler bilden Teams und beraten sich
+            gemeinsam, welche Karten sie aufdecken möchten.
+          </li>
+          <li>
+            <strong>Memory mit einer Geschichte:</strong> Nach jedem gefundenen
+            Paar erzählt der Spieler eine kurze Geschichte, die die Motive der
+            Karten verbindet.
+          </li>
+          <li>
+            <strong>Memory in Bewegung:</strong> Jede Karte ist mit einer
+            Bewegung (z. B. Springen, Klatschen) verbunden, die der Spieler nach
+            einem erfolgreichen Paar ausführen muss.
+          </li>
+        </ul>
+      </article>
+
+      <article id="wissenschaft-hinter-dem-spiel">
+        <h2>Wissenschaft hinter dem Spiel</h2>
+        <p>
+          Studien haben gezeigt, dass Spiele wie Memory die neuronale
+          Plastizität fördern, also die Fähigkeit des Gehirns, sich anzupassen
+          und zu lernen. Dies ist besonders wichtig, um im Alter geistig fit zu
+          bleiben.
+        </p>
+      </article>
+
+      <article id="herausforderung-fuer-kinder">
+        <h2>Herausforderung für Kinder</h2>
+        <p>
+          Spieler können versuchen, Memory mit verbundenen Augen zu spielen,
+          indem sie nur die Form oder Struktur der Karten ertasten.
+        </p>
+        <p>
+          Eine weitere Option ist, Memory mit zusätzlichen Geräuschen zu
+          kombinieren, die das Thema der Karten darstellen (z. B.
+          Tiergeräusche).
+        </p>
+      </article>
+
+      <article id="extra-ideen">
+        <h2>Extra-Ideen für die Webseite</h2>
+        <ul>
+          <li>
+            <strong>Wussten Sie schon?</strong> Ein Abschnitt mit interessanten
+            Fakten zum Thema Gedächtnistraining.
+          </li>
+          <li>
+            <strong>Herausforderungen:</strong> Einen wöchentlichen
+            Memory-Wettbewerb mit Online-Bestenliste einführen.
+          </li>
+          <li>
+            <strong>Downloads:</strong> Option für Nutzer, eigene Memory-Karten
+            zu drucken und offline zu spielen.
+          </li>
+          <li>
+            <strong>Community:</strong> Ein Bereich für Fans des Spiels, um
+            Bilder, Geschichten oder Erfolge zu teilen.
+          </li>
+        </ul>
+      </article>
+
+      <article id="nachricht">
+        <h2>Nachricht</h2>
+        <form id="contact-form">
+          <label for="user-message">Deine Nachricht:</label>
+          <textarea
+            id="user-message"
+            name="message"
+            placeholder="Schreib uns hier deine Nachricht..."
+          ></textarea>
+          <button type="submit">Senden</button>
+        </form>
+      </article>
+    </main>
+  </body>
+</html>
